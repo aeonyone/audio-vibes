@@ -14,7 +14,9 @@ Install ffmpeg or avconv
 python audio-vibes.py -i INPUT_PATH [-o OUTPUT_PATH] -v VIBE [-r]
 ```
 Valid input path is a relative file path or a youtube url
+
 Valid output path is a relative file path
+
 Valid vibe is one of the following:
 - bathroom_at_club
 - bathroom_at_party
