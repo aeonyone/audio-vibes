@@ -6,6 +6,12 @@ __pycache__/
 # C extensions
 *.so
 
+# mp3 files
+*.mp3
+
+# Development notebook
+dev.ipynb
+
 # Distribution / packaging
 .Python
 build/
