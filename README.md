@@ -1,4 +1,4 @@
-audio-vibes - apply aesthetic effects to an audio from a file or a microphone
+audio-vibes - apply aesthetic effects to an audio from a file or a youtube video
 
 # INSTALLATION
 Clone repository 
