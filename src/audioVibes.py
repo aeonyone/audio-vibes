@@ -4,6 +4,8 @@ import subprocess
 import sys
 import getopt
 import os
+import moviepy.editor as mp
+
 
 class AudioVibes:
    def __init__(self, argv):
@@ -68,16 +70,25 @@ class AudioVibes:
       # Check if the source is youtube
       if self.arg_input.startswith("https://www.youtube.com/"):
          print("Downloading audio from youtube")
-         youtube_command = ['youtube-dl', '-o', '%(title)s.%(ext)s', '-x', '--audio-format', 'mp3', '--audio-quality', '0', self.arg_input]
+         youtube_command = ['youtube-dl', '-o', '%(title)s.%(ext)s', '--audio-quality', '0', self.arg_input]
 
          p = subprocess.Popen(youtube_command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
          for line in p.stdout:
             line = line.decode("utf-8").rstrip()
             print(line)
-            if line[0:len('[ffmpeg] Destination: ')] == '[ffmpeg] Destination: ' and line[-3:] == 'mp3':
-               self.audio_file = line[len('[ffmpeg] Destination: '):]
+            # Fetch video file name from the console
+            if line[0:len('[download] Destination: ')] == '[download] Destination: ':
+               video_file = line[len('[download] Destination: '):]
          p.wait()
-         print("Download complete")
+         print("Video download complete, converting to mp3")
+
+         self.audio_file = video_file[:video_file.rfind('.')]+".mp3"
+         # Convert the downloaded file to mp3 with output name as the input name without the extension
+         mp.AudioFileClip(video_file).write_audiofile(self.audio_file)
+
+         # Delete the video file
+         os.remove(video_file)
+         
       # If the source is a file
       else:
          self.audio_file = self.arg_input

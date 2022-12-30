@@ -9,6 +9,10 @@ __pycache__/
 # mp3 files
 *.mp3
 
+# video formats
+.webm
+.mp4
+
 # Development notebook
 dev.ipynb
 
