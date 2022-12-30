@@ -1,4 +1,4 @@
-audio-vibes - apply aesthetic effects to an audio from a file or a microphone
+audio-vibes - apply aesthetic effects to an audio from a file or a youtube video
 
 # INSTALLATION
 Clone repository 
@@ -13,7 +13,9 @@ pip install -r requirements.txt
 python audio-vibes.py -i INPUT_PATH [-o OUTPUT_PATH] -v VIBE [-r]
 ```
 Valid input path is a relative file path or a youtube url
+
 Valid output path is a relative file path
+
 Valid vibe is one of the following:
 - bathroom_at_club
 - bathroom_at_party
